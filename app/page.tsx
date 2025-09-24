@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10">
+    <div className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10">
       <Backgrounds
         backgrounds={backgrounds}
         onSelect={handleBackgroundSelect}
@@ -53,7 +53,7 @@ export default function Home() {
             <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="border p-2 rounded-lg w-full mt-1 focus:ring-2 focus:ring-blue-500 resize-none"
+              className="border border-gray-300 p-2 rounded-lg w-full mt-1 focus:ring-2 focus:ring-blue-500 resize-none"
               placeholder="Type your text here..."
               rows={4}
             />
@@ -64,7 +64,7 @@ export default function Home() {
             <select
               value={font}
               onChange={(e) => setFont(e.target.value)}
-              className="border p-2 rounded-lg focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-500"
             >
               {fonts.map((f) => (
                 <option key={f} value={f}>
@@ -97,7 +97,7 @@ export default function Home() {
               type="color"
               value={textColor}
               onChange={(e) => setTextColor(e.target.value)}
-              className="h-10 w-full border rounded"
+              className="h-10 w-full rounded"
             />
           </div>
 
@@ -150,6 +150,6 @@ export default function Home() {
           </button>
         </section>
       </div>
-    </main>
+    </div>
   );
 }
