@@ -45,7 +45,7 @@ export default function Preview({
         }
         className="bg-[#1f9ded] hover:bg-[#18a0f5ff] text-white font-normal  px-6 py-[.6rem] rounded-md transition cursor-pointer"
       >
-        Export
+        Download
       </button>
     </section>
   );

@@ -14,7 +14,7 @@ export default function Header() {
   if (!mounted) return null;
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 h-20 dark:bg-gradient-to-b from-gray-950 via-black to-gray-950">
+    <header className="w-full fixed top-0 left-0 z-50 h-20 bg-white dark:bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto h-full flex items-center justify-between px-6">
         <Image src="/logo.png" alt="Logo" width={40} height={40} />
 
