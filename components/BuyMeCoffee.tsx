@@ -1,4 +1,5 @@
 import { BuyMeACoffee } from "@kanokpit.y/buy-me-a-coffee";
+import { X } from "lucide-react";
 
 export default function BuyMeCoffee({
   setIsModalOpen,
@@ -14,6 +15,12 @@ export default function BuyMeCoffee({
         className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg flex flex-col items-center gap-4 max-w-md text-center pb-8"
         onClick={(e) => e.stopPropagation()}
       >
+        <div className="flex justify-between items-center w-full">
+          <div className="flex-1"></div>
+          <div className="cursor-pointer bg-gray-300 text-gray-50 h-8 w-8 flex justify-center items-center rounded-full">
+            <X className="h-6 w-6" onClick={() => setIsModalOpen(false)} />
+          </div>
+        </div>
         <span className="text-5xl">🎉 </span>
         <p className="text-gray-900 dark:text-gray-300 font-normal">
           Post Generated!
