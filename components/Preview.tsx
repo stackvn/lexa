@@ -3,13 +3,13 @@
 import { fontMap } from "@/util/fonts";
 
 interface PreviewProps {
-  text: string;
-  bg: string;
-  font: string;
-  textColor: string;
-  fontSize: number;
+  exportRef: React.RefObject<HTMLDivElement>;
   handleExport: (ref: React.RefObject<HTMLDivElement>) => void;
-  exportRef: React.RefObject<HTMLDivElement | null> | null;
+  text: string;
+  font: string;
+  fontSize: number;
+  textColor: string;
+  bg: string;
 }
 
 export default function Preview({
@@ -21,7 +21,6 @@ export default function Preview({
   fontSize,
   exportRef,
 }: PreviewProps) {
-  console.log(bg);
   return (
     <section className="flex-1 flex flex-col items-start justify-center gap-8">
       <div
@@ -41,7 +40,9 @@ export default function Preview({
         <span>{text}</span>
       </div>
       <button
-        onClick={() => handleExport(exportRef)}
+        onClick={() =>
+          handleExport(exportRef as React.RefObject<HTMLDivElement>)
+        }
         className="bg-[#1f9ded] hover:bg-[#18a0f5ff] text-white font-normal  px-6 py-[.6rem] rounded-md transition cursor-pointer"
       >
         Export

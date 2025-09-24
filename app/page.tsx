@@ -44,7 +44,7 @@ export default function Home() {
   };
 
   const handleExport = async (ref: React.RefObject<HTMLDivElement>) => {
-    if (!ref.current) return;
+    if (!ref?.current) return;
 
     let watermark: HTMLDivElement | null = null;
 
@@ -125,7 +125,7 @@ export default function Home() {
           textColor={textColor}
           bg={bg}
           handleExport={handleExport}
-          exportRef={exportRef}
+          exportRef={exportRef as React.RefObject<HTMLDivElement>}
         />
       </div>
     </div>
