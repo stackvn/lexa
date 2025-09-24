@@ -28,9 +28,9 @@ export default function Backgrounds({
     <div className="flex flex-col gap-2 w-full max-w-6xl relative">
       <button
         onClick={() => scroll("left")}
-        className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-200 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"
+        className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-300 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-700" />
       </button>
 
       <div
@@ -55,7 +55,7 @@ export default function Backgrounds({
         onClick={() => scroll("right")}
         className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-200 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-700" />
       </button>
     </div>
   );

@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
+import Providers from "./providers";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -26,9 +27,15 @@ export default function RootLayout({
       suppressHydrationWarning={true}
     >
       <body className={`${poppins.className}`}>
-        <Header />
-        <main className="pt-14">{children}</main>
-        <Footer />
+        <Providers>
+          <div className="flex flex-col min-h-screen">
+            <main className="flex-grow flex justify-center items-center">
+              <Header />
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   );
