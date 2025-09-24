@@ -1,6 +1,7 @@
 "use client";
 
 import Backgrounds from "@/components/Backgrounds";
+import BuyMeCoffee from "@/components/BuyMeCoffee";
 import FontSelector from "@/components/FontSelector";
 import FontSize from "@/components/FontSize";
 import Preview from "@/components/Preview";
@@ -18,6 +19,9 @@ export default function Home() {
   const [fontSize, setFontSize] = useState(32);
   const [textColor, setTextColor] = useState("#000000");
   const [title, setTitle] = useState(text.split(" ")[0]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const [bg, setBg] = useState("#f9fafb");
   const exportRef = useRef<HTMLDivElement>(null);
@@ -54,33 +58,6 @@ export default function Home() {
         await (document as any).fonts.ready;
       }
 
-      // Create watermark and add it directly to the original element
-      watermark = document.createElement("div");
-      watermark.innerText = "© Lexa";
-
-      Object.assign(watermark.style, {
-        position: "absolute",
-        bottom: "10px",
-        right: "10px",
-        fontSize: "16px",
-        color: textColor,
-        pointerEvents: "none",
-        zIndex: "9999",
-        fontFamily: font,
-        fontWeight: "500",
-      });
-
-      // Store original position style
-      const originalPosition = ref.current.style.position;
-
-      // Set relative positioning if not already set
-      if (!originalPosition || originalPosition === "static") {
-        ref.current.style.position = "relative";
-      }
-
-      // Add watermark to original element
-      ref.current.appendChild(watermark);
-
       // Export with watermark
       const dataUrl = await toPng(ref.current, {
         cacheBust: true,
@@ -93,13 +70,10 @@ export default function Home() {
       link.download = `${title}.png`;
       link.href = dataUrl;
       link.click();
+
+      setIsModalOpen(true);
     } catch (err) {
       console.error("Export failed", err);
-    } finally {
-      // Clean up: remove watermark from original element
-      if (watermark && ref.current && ref.current.contains(watermark)) {
-        ref.current.removeChild(watermark);
-      }
     }
   };
 
@@ -110,6 +84,8 @@ export default function Home() {
         onSelect={handleBackgroundSelect}
         selected={bg}
       />
+
+      {isModalOpen && <BuyMeCoffee setIsModalOpen={setIsModalOpen} />}
 
       <div className="flex flex-col xl:flex-row w-full max-w-7xl flex-1 pt-10 gap-8">
         <aside className="lg:w-72 bg-white rounded-lg shadow-lg p-6 flex flex-col gap-6">

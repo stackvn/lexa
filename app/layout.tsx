@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins } from "next/font/google";
+import { Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Providers from "./providers";
 
-const poppins = Poppins({
+const raleway = Raleway({
   subsets: ["latin"],
   weight: ["200", "300", "400", "600", "700", "900"],
 });
@@ -76,7 +76,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${poppins.className}`}>
+      <body className={`${raleway.className}`}>
         <Providers>
           <div className="min-h-screen flex flex-col px-4 max-w-7xl mx-auto">
             <Header />
