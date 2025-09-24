@@ -3,22 +3,22 @@
 import Backgrounds from "@/components/Backgrounds";
 import FontSelector from "@/components/FontSelector";
 import FontSize from "@/components/FontSize";
+import Preview from "@/components/Preview";
 import TextColor from "@/components/TextColor";
 import TextInput from "@/components/TextInput";
+import { fonts } from "@/util/fonts";
 import { backgrounds } from "@/util/helper";
+import { toPng } from "html-to-image";
 import { useState, useRef } from "react";
-
-const fonts = ["sans-serif", "serif", "monospace", "cursive", "fantasy"];
 
 export default function Home() {
   const [text, setText] = useState("Hello World!");
-  const [font, setFont] = useState(fonts[0]);
+  const [font, setFont] = useState(fonts[0].name);
   const [fontSize, setFontSize] = useState(32);
   const [textColor, setTextColor] = useState("#000000");
-  const [shadow, setShadow] = useState(false);
+  const [title, setTitle] = useState(text.split(" ")[0]);
 
-  const [bg, setBg] = useState("#f9fafb"); // current background
-  const [customColor, setCustomColor] = useState("#f9fafb"); // only for <input type="color">
+  const [bg, setBg] = useState("#f9fafb");
   const exportRef = useRef<HTMLDivElement>(null);
 
   function getContrastColor(bgColor: string) {
@@ -42,6 +42,29 @@ export default function Home() {
     setTextColor(getContrastColor(value));
   };
 
+  const handleExport = async (ref: React.RefObject<HTMLDivElement>) => {
+    if (!ref.current) return;
+
+    try {
+      if (typeof document !== "undefined" && (document as any).fonts) {
+        await (document as any).fonts.ready;
+      }
+
+      const dataUrl = await toPng(ref.current, {
+        cacheBust: true,
+        useCors: true,
+        backgroundColor: bg || "white",
+      } as any);
+
+      const link = document.createElement("a");
+      link.download = `${title}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error("Export failed", err);
+    }
+  };
+
   return (
     <div className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10">
       <Backgrounds
@@ -52,32 +75,20 @@ export default function Home() {
 
       <div className="flex w-full max-w-6xl flex-1 p-8 gap-8">
         <aside className="w-72 bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
-          <TextInput text={text} setText={setText} />
-          <FontSelector fonts={fonts} font={font} setFont={setFont} />
+          <TextInput text={text} setText={setText} setTitle={setTitle} />
+          <FontSelector font={font} setFont={setFont} />
           <FontSize fontSize={fontSize} setFontSize={setFontSize} />
           <TextColor textColor={textColor} setTextColor={setTextColor} />
         </aside>
-
-        {/* Preview Canvas */}
-        <section className="flex-1 flex flex-col items-start justify-center gap-8">
-          <div
-            ref={exportRef}
-            className="w-full h-[500px] flex items-center justify-center rounded-2xl shadow-lg px-8 py-4"
-            style={{
-              background: bg,
-              fontFamily: font,
-              fontSize: `${fontSize}px`,
-              color: textColor,
-              textShadow: "3px 3px 6px rgba(0,0,0,0.25)",
-              whiteSpace: "pre-wrap", // ✅ keeps newlines
-            }}
-          >
-            <span>{text}</span>
-          </div>
-          <button className="bg-orange-400 hover:bg-orange-500 text-white font-normal  px-6 py-[.6rem] rounded-lg transition cursor-pointer">
-            Export
-          </button>
-        </section>
+        <Preview
+          text={text}
+          font={font}
+          fontSize={fontSize}
+          textColor={textColor}
+          bg={bg}
+          handleExport={handleExport}
+          exportRef={exportRef}
+        />
       </div>
     </div>
   );

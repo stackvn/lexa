@@ -26,6 +26,42 @@ export default function RootLayout({
       className="scroll-smooth bg-white text-black dark:bg-gradient-to-b from-gray-950 via-black to-gray-950 dark:text-white"
       suppressHydrationWarning={true}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Pacifico&family=Dancing+Script&family=Sacramento&family=Great+Vibes&family=Shadows+Into+Light&family=MedievalSharp&family=Uncial+Antiqua&family=Cinzel+Decorative&family=Pirata+One&family=Creepster&family=Press+Start+2P&family=Bangers&family=Fredoka+One&family=Luckiest+Guy&family=Lobster&family=Raleway:wght@400;700&family=Montserrat:wght@400;700&family=Poppins:wght@400;700&family=Oswald:wght@400;700&family=Orbitron:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          href="https://fonts.googleapis.com/css2?
+                    family=Pacifico&
+                    family=Dancing+Script&
+                    family=Sacramento&
+                    family=Great+Vibes&
+                    family=Shadows+Into+Light&
+                    family=MedievalSharp&
+                    family=Uncial+Antiqua&
+                    family=Cinzel+Decorative&
+                    family=Pirata+One&
+                    family=Creepster&
+                    family=Press+Start+2P&
+                    family=Bangers&
+                    family=Fredoka+One&
+                    family=Luckiest+Guy&
+                    family=Lobster&
+                    family=Raleway:wght@400;700&
+                    family=Montserrat:wght@400;700&
+                    family=Poppins:wght@400;700&
+                    family=Oswald:wght@400;700&
+                    family=Orbitron:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className={`${poppins.className}`}>
         <Providers>
           <div className="flex flex-col min-h-screen">
