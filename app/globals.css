@@ -142,3 +142,9 @@ li {
 .scrollbar-hide::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
+
+input,
+textarea {
+    outline: none;
+    outline-width: 0;
+}
