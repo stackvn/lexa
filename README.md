@@ -54,11 +54,11 @@ Start the server
 
 ### Light theme
 
-![Light theme](https://raw.githubusercontent.com/stackvn/lexa/refs/heads/main/public/screenshots/light.png?token=GHSAT0AAAAAADHYL7WAQUO6LO2EA7RK46IO2GUDY4Q)
+![Light theme](https://github.com/stackvn/lexa/blob/main/public/screenshots/light.png?raw=true)
 
 
 ### Sample output
-![Output](https://raw.githubusercontent.com/stackvn/lexa/refs/heads/main/public/screenshots/output.png?token=GHSAT0AAAAAADHYL7WAGKB5AVCUARCGL6GM2GUDZUA)
+![Output](https://github.com/stackvn/lexa/blob/main/public/screenshots/output.png?raw=true)
 
 
 
