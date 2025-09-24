@@ -11,7 +11,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Lexa",
+  title: "Lexa - Generate cool text posts for your socials",
   description: "Generate cool social media posts",
 };
 

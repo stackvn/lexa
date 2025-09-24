@@ -21,6 +21,7 @@ export default function Preview({
   fontSize,
   exportRef,
 }: PreviewProps) {
+  console.log(bg);
   return (
     <section className="flex-1 flex flex-col items-start justify-center gap-8">
       <div
@@ -28,6 +29,9 @@ export default function Preview({
         className="w-full h-[500px] flex items-center justify-center rounded-2xl shadow-lg px-10 py-4"
         style={{
           backgroundColor: bg,
+          backgroundImage: bg,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
           fontFamily: fontMap[font] ?? "sans-serif",
           fontSize: `${fontSize}px`,
           color: textColor,
