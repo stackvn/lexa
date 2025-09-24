@@ -42,7 +42,7 @@ export default function Preview({
       </div>
       <button
         onClick={() => handleExport(exportRef)}
-        className="bg-orange-400 hover:bg-orange-500 text-white font-normal  px-6 py-[.6rem] rounded-lg transition cursor-pointer"
+        className="bg-[#1f9ded] hover:bg-[#18a0f5ff] text-white font-normal  px-6 py-[.6rem] rounded-md transition cursor-pointer"
       >
         Export
       </button>
