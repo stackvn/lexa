@@ -39,13 +39,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-gray-100 via-white to-gray-200">
-      <header className="w-full py-6 px-8 flex justify-between items-center border-b bg-white/70 backdrop-blur-sm shadow-sm mb-6">
-        <h1 className="text-2xl font-bold tracking-tight text-gray-800">
-          Lexa
-        </h1>
-      </header>
-
+    <main className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10">
       <Backgrounds
         backgrounds={backgrounds}
         onSelect={handleBackgroundSelect}
@@ -53,10 +47,7 @@ export default function Home() {
       />
 
       <div className="flex w-full max-w-6xl flex-1 p-8 gap-8">
-        {/* Controls Sidebar */}
         <aside className="w-72 bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
-          <h2 className="font-semibold text-lg text-gray-700">Controls</h2>
-
           <div>
             <label className="text-sm font-medium text-gray-600">Text</label>
             <textarea

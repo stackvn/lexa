@@ -1,5 +1,8 @@
 "use client";
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef } from "react";
+
 type BackgroundSelectorProps = {
   backgrounds: { name: string; value: string }[];
   onSelect: (value: string) => void;
@@ -11,9 +14,29 @@ export default function Backgrounds({
   onSelect,
   selected,
 }: BackgroundSelectorProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -200 : 200,
+        behavior: "smooth",
+      });
+    }
+  };
   return (
-    <div className="flex flex-col gap-2">
-      <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+    <div className="flex flex-col gap-2 w-full max-w-6xl relative">
+      <button
+        onClick={() => scroll("left")}
+        className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-200 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+
+      <div
+        ref={scrollRef}
+        className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide"
+      >
         {backgrounds.map((preset) => (
           <button
             key={preset.name}
@@ -28,6 +51,12 @@ export default function Backgrounds({
           />
         ))}
       </div>
+      <button
+        onClick={() => scroll("right")}
+        className="absolute right-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-200 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
     </div>
   );
 }
