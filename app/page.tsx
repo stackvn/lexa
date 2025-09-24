@@ -1,5 +1,7 @@
 "use client";
 
+import Backgrounds from "@/components/Backgrounds";
+import { backgrounds } from "@/util/helper";
 import { useState, useRef } from "react";
 
 const fonts = ["sans-serif", "serif", "monospace", "cursive", "fantasy"];
@@ -9,17 +11,25 @@ export default function Home() {
   const [font, setFont] = useState(fonts[0]);
   const [fontSize, setFontSize] = useState(32);
   const [textColor, setTextColor] = useState("#000000");
-  const [bg, setBg] = useState("#ffffff");
   const [shadow, setShadow] = useState(false);
+
+  const [bg, setBg] = useState("#f9fafb"); // current background
+  const [customColor, setCustomColor] = useState("#f9fafb"); // only for <input type="color">
   const exportRef = useRef<HTMLDivElement>(null);
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-gray-100 via-white to-gray-200">
-      <header className="w-full py-6 px-8 flex justify-between items-center border-b bg-white/70 backdrop-blur-sm shadow-sm">
+      <header className="w-full py-6 px-8 flex justify-between items-center border-b bg-white/70 backdrop-blur-sm shadow-sm mb-6">
         <h1 className="text-2xl font-bold tracking-tight text-gray-800">
           Lexa
         </h1>
       </header>
+
+      <Backgrounds
+        backgrounds={backgrounds}
+        onSelect={(value) => setBg(value)}
+        selected={bg}
+      />
 
       <div className="flex w-full max-w-6xl flex-1 p-8 gap-8">
         {/* Controls Sidebar */}
@@ -79,14 +89,17 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div>
             <label className="text-sm font-medium text-gray-600">
-              Background Color
+              Custom Background
             </label>
             <input
               type="color"
-              value={bg}
-              onChange={(e) => setBg(e.target.value)}
+              value={customColor}
+              onChange={(e) => {
+                setCustomColor(e.target.value);
+                setBg(e.target.value);
+              }}
               className="h-10 w-full border rounded"
             />
           </div>
@@ -110,11 +123,11 @@ export default function Home() {
             ref={exportRef}
             className="w-full h-[500px] flex items-center justify-center rounded-2xl shadow-lg px-8 py-4"
             style={{
-              backgroundColor: bg,
+              background: bg,
               fontFamily: font,
               fontSize: `${fontSize}px`,
               color: textColor,
-              textShadow: shadow ? "3px 3px 6px rgba(0,0,0,0.25)" : "none",
+              textShadow: "3px 3px 6px rgba(0,0,0,0.25)",
             }}
           >
             <span>{text}</span>
