@@ -28,7 +28,7 @@ export default function BuyMeCoffee({
         <span className="text-gray-700 dark:text-gray-400 text-base">
           Thanks for using <b>Lexa</b>! Feel free to reach out to me on{" "}
           <a
-            href="https://twitter.com/your_twitter_handle"
+            href="https://x.com/alekskimeu"
             target="_blank"
             className="text-[#1f9ded]"
           >
