@@ -1,6 +1,10 @@
 "use client";
 
 import Backgrounds from "@/components/Backgrounds";
+import FontSelector from "@/components/FontSelector";
+import FontSize from "@/components/FontSize";
+import TextColor from "@/components/TextColor";
+import TextInput from "@/components/TextInput";
 import { backgrounds } from "@/util/helper";
 import { useState, useRef } from "react";
 
@@ -48,85 +52,10 @@ export default function Home() {
 
       <div className="flex w-full max-w-6xl flex-1 p-8 gap-8">
         <aside className="w-72 bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
-          <div>
-            <label className="text-sm font-medium text-gray-600">Text</label>
-            <textarea
-              value={text}
-              onChange={(e) => setText(e.target.value)}
-              className="border border-gray-300 p-2 rounded-lg w-full mt-1 focus:ring-2 focus:ring-blue-500 resize-none"
-              placeholder="Type your text here..."
-              rows={4}
-            />
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-600">Font</label>
-            <select
-              value={font}
-              onChange={(e) => setFont(e.target.value)}
-              className="border border-gray-300 p-2 rounded-lg focus:ring-2 focus:ring-blue-500"
-            >
-              {fonts.map((f) => (
-                <option key={f} value={f}>
-                  {f}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-600">
-              Font Size
-            </label>
-            <input
-              type="range"
-              min="16"
-              max="100"
-              value={fontSize}
-              onChange={(e) => setFontSize(Number(e.target.value))}
-              className="accent-blue-600"
-            />
-            <span className="text-xs text-gray-500">{fontSize}px</span>
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-sm font-medium text-gray-600">
-              Text Color
-            </label>
-            <input
-              type="color"
-              value={textColor}
-              onChange={(e) => setTextColor(e.target.value)}
-              className="h-10 w-full rounded"
-            />
-          </div>
-
-          <div>
-            <label className="text-sm font-medium text-gray-600">
-              Custom Background
-            </label>
-            <input
-              type="color"
-              value={customColor}
-              onChange={(e) => {
-                setCustomColor(e.target.value);
-                setBg(e.target.value);
-              }}
-              className="h-10 w-full border rounded"
-            />
-          </div>
-
-          <div className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={shadow}
-              onChange={() => setShadow(!shadow)}
-              className="accent-blue-600"
-            />
-            <label className="text-sm font-medium text-gray-600">
-              Text Shadow
-            </label>
-          </div>
+          <TextInput text={text} setText={setText} />
+          <FontSelector fonts={fonts} font={font} setFont={setFont} />
+          <FontSize fontSize={fontSize} setFontSize={setFontSize} />
+          <TextColor textColor={textColor} setTextColor={setTextColor} />
         </aside>
 
         {/* Preview Canvas */}
