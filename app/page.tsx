@@ -74,7 +74,7 @@ export default function Home() {
           >
             <span>{text}</span>
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg shadow-md transition cursor-pointer">
+          <button className="bg-orange-400 hover:bg-orange-500 text-white font-normal  px-6 py-[.6rem] rounded-lg transition cursor-pointer">
             Export
           </button>
         </section>
