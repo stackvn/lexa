@@ -10,9 +10,23 @@ const poppins = Poppins({
   weight: ["200", "300", "400", "600", "700", "900"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Lexa - Generate cool text posts for your socials",
-  description: "Generate cool social media posts",
+  description: "Generate cool social media posts.",
+  openGraph: {
+    title: "Lexa",
+    description: "Generate cool social media posts",
+    url: "https://lexa-awiq.vercel.app/",
+    siteName: "Lexa",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+    type: "website",
+  },
 };
 
 export default function RootLayout({
