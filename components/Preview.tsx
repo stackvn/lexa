@@ -22,10 +22,10 @@ export default function Preview({
   exportRef,
 }: PreviewProps) {
   return (
-    <section className="flex-1 flex flex-col items-start justify-center gap-8">
+    <section className="flex-1 flex flex-col items-start justify-center gap-8 w-full">
       <div
         ref={exportRef}
-        className="w-full h-[500px] flex items-center justify-center rounded-2xl shadow-lg px-10 py-4"
+        className="w-full h-[500px] flex items-center justify-center rounded-lg shadow-lg px-10 py-4"
         style={{
           backgroundColor: bg,
           backgroundImage: bg,

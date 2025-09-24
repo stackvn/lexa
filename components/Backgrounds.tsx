@@ -25,7 +25,7 @@ export default function Backgrounds({
     }
   };
   return (
-    <div className="flex flex-col gap-2 w-full max-w-6xl relative">
+    <div className="flex flex-col gap-2 w-full relative mt-14">
       <button
         onClick={() => scroll("left")}
         className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center justify-center bg-white/80 dark:bg-gray-300 p-2 rounded-full shadow-md z-10 hover:scale-110 transition cursor-pointer"

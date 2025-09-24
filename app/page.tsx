@@ -104,15 +104,15 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10">
+    <div className="min-h-[calc(100vh - 20px)] flex flex-col items-center justify-start pt-10 ">
       <Backgrounds
         backgrounds={backgrounds}
         onSelect={handleBackgroundSelect}
         selected={bg}
       />
 
-      <div className="flex w-full max-w-6xl flex-1 p-8 gap-8">
-        <aside className="w-72 bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
+      <div className="flex flex-col xl:flex-row w-full max-w-7xl flex-1 pt-10 gap-8">
+        <aside className="lg:w-72 bg-white rounded-lg shadow-lg p-6 flex flex-col gap-6">
           <TextInput text={text} setText={setText} setTitle={setTitle} />
           <FontSelector font={font} setFont={setFont} />
           <FontSize fontSize={fontSize} setFontSize={setFontSize} />
