@@ -41,7 +41,7 @@ export default function Backgrounds({
           <button
             key={preset.name}
             onClick={() => onSelect(preset.value)}
-            className={`min-w-[80px] h-20 rounded-xl border-2 flex-shrink-0 transition ${
+            className={`min-w-[80px] h-20 rounded-xl border-2 flex-shrink-0 transition cursor-pointer ${
               selected === preset.value
                 ? "border-blue-600"
                 : "border-transparent"
