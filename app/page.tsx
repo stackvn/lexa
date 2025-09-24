@@ -17,6 +17,27 @@ export default function Home() {
   const [customColor, setCustomColor] = useState("#f9fafb"); // only for <input type="color">
   const exportRef = useRef<HTMLDivElement>(null);
 
+  function getContrastColor(bgColor: string) {
+    // Remove '#' if present
+    const hex = bgColor.replace("#", "");
+
+    // Parse hex to RGB
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+
+    // Calculate brightness
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Return black for light bg, white for dark bg
+    return brightness > 125 ? "#000000" : "#FFFFFF";
+  }
+
+  const handleBackgroundSelect = (value: string) => {
+    setBg(value);
+    setTextColor(getContrastColor(value));
+  };
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-start bg-gradient-to-br from-gray-100 via-white to-gray-200">
       <header className="w-full py-6 px-8 flex justify-between items-center border-b bg-white/70 backdrop-blur-sm shadow-sm mb-6">
@@ -27,7 +48,7 @@ export default function Home() {
 
       <Backgrounds
         backgrounds={backgrounds}
-        onSelect={(value) => setBg(value)}
+        onSelect={handleBackgroundSelect}
         selected={bg}
       />
 
@@ -36,14 +57,14 @@ export default function Home() {
         <aside className="w-72 bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-6">
           <h2 className="font-semibold text-lg text-gray-700">Controls</h2>
 
-          <div className="flex flex-col gap-2">
+          <div>
             <label className="text-sm font-medium text-gray-600">Text</label>
-            <input
-              type="text"
+            <textarea
               value={text}
               onChange={(e) => setText(e.target.value)}
-              className="border p-2 rounded-lg focus:ring-2 focus:ring-blue-500"
-              placeholder="Enter your text..."
+              className="border p-2 rounded-lg w-full mt-1 focus:ring-2 focus:ring-blue-500 resize-none"
+              placeholder="Type your text here..."
+              rows={4}
             />
           </div>
 
@@ -128,6 +149,7 @@ export default function Home() {
               fontSize: `${fontSize}px`,
               color: textColor,
               textShadow: "3px 3px 6px rgba(0,0,0,0.25)",
+              whiteSpace: "pre-wrap", // ✅ keeps newlines
             }}
           >
             <span>{text}</span>
