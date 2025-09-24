@@ -9,7 +9,7 @@ interface PreviewProps {
   textColor: string;
   fontSize: number;
   handleExport: (ref: React.RefObject<HTMLDivElement>) => void;
-  exportRef: React.RefObject<HTMLDivElement> | null;
+  exportRef: React.RefObject<HTMLDivElement | null> | null;
 }
 
 export default function Preview({
