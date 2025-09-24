@@ -49,7 +49,7 @@ Start the server
 ## Screenshots
 
 ### Dark theme
-![Dark theme](https://raw.githubusercontent.com/stackvn/lexa/refs/heads/main/public/screenshots/dark.png?token=GHSAT0AAAAAADHYL7WAH4MWLFY5YDLUAQLY2GUDYJQ)
+![Dark theme](https://github.com/stackvn/lexa/blob/main/public/screenshots/dark.png?raw=true)
 
 
 ### Light theme
