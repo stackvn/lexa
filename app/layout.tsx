@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Raleway } from "next/font/google";
+import { Titillium_Web } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/common/Header";
 import Footer from "@/components/common/Footer";
 import Providers from "./providers";
 
-const raleway = Raleway({
+const titillium = Titillium_Web({
   subsets: ["latin"],
   weight: ["200", "300", "400", "600", "700", "900"],
 });
@@ -76,7 +76,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${raleway.className}`}>
+      <body className={`${titillium.className}`}>
         <Providers>
           <div className="min-h-screen flex flex-col px-4 max-w-7xl mx-auto">
             <Header />
